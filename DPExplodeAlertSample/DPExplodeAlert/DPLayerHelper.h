@@ -11,6 +11,6 @@
 @interface DPLayerHelper : NSObject
 
 +(UIImage *)imageFromLayer:(CALayer *)layer;
-+(UIBezierPath *)pathForLayer:(CALayer *)layer parentRect:(CGRect)rect andView:(UIView*)view;
++(UIBezierPath *)pathForLayer:(CALayer *)layer parentRect:(CGRect)rect andView:(UIView*)view andCenterX:(float)centerX;
 
 @end

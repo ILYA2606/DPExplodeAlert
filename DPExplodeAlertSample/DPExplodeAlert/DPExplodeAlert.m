@@ -79,7 +79,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin&UIViewAutoresizingFlexibleRightMargin&UIViewAutoresizingFlexibleWidth&UIViewAutoresizingFlexibleHeight;
     
-    UITapGestureRecognizer *tapToBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
+    UITapGestureRecognizer *tapToBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide:)];
     [v_background addGestureRecognizer:tapToBackground];
     
     [v_background addSubview:l_title];
@@ -99,10 +99,11 @@
     }];
 }
 
--(void)hide{
+-(void)hide:(UITapGestureRecognizer*)sender{
+    CGPoint pointTap = [sender locationInView:v_explode];
     v_explode.userInteractionEnabled = NO;
     [DPDelegateHelper safeCallMethod:@"alertWillExplode" withTarget:_delegate];
-    [DPExplodeHelper explodeView:v_explode withDelegate:(id<DPExplodeDelegate>)self andDuration:_duration andExplodeCounter:_explodeCounter];
+    [DPExplodeHelper explodeView:v_explode withDelegate:(id<DPExplodeDelegate>)self andDuration:_duration andExplodeCounter:_explodeCounter andCenterX:pointTap.x];
 }
 
 -(void)roundCornersForView:(UIView*)view{

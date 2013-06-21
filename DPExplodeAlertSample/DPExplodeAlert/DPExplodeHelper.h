@@ -20,10 +20,11 @@
 
 @interface DPExplodeHelper : NSObject
 
-+ (void)explodeView:(UIView*)view withDelegate:(id <DPExplodeDelegate>)delegate;
-+ (void)explodeView:(UIView*)view withDelegate:(id <DPExplodeDelegate>)delegate andDuration:(NSTimeInterval)duration andExplodeCounter:(int)explodeCounter;
++ (void)explodeView:(UIView*)view withDelegate:(id <DPExplodeDelegate>)delegate andCenterX:(float)centerX;
++ (void)explodeView:(UIView*)view withDelegate:(id <DPExplodeDelegate>)delegate andDuration:(NSTimeInterval)duration andExplodeCounter:(int)explodeCounter andCenterX:(float)centerX;
 
 @property (nonatomic, assign) id <DPExplodeDelegate> __unsafe_unretained delegate;
 @property (nonatomic, strong) UIView *viewForExplode;
+@property (nonatomic) float centerX;
 
 @end

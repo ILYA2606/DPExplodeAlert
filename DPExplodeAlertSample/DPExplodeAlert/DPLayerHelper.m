@@ -22,7 +22,7 @@
     return outputImage;
 }
 
-+(UIBezierPath *)pathForLayer:(CALayer *)layer parentRect:(CGRect)rect andView:(UIView*)view
++(UIBezierPath *)pathForLayer:(CALayer *)layer parentRect:(CGRect)rect andView:(UIView*)view andCenterX:(float)centerX
 {
     UIBezierPath *particlePath = [UIBezierPath bezierPath];
     [particlePath moveToPoint:layer.position];
@@ -41,7 +41,7 @@
     
     float endY = view.superview.frame.size.height-view.frame.origin.y+50;
     
-    float centerX = rect.size.width*0.5;
+    //float centerX = rect.size.width*0.5;
     float maxLeftRightShift = fabsf(layer.position.x-centerX)/30 * [DPRandomHelper randomFloat];
     
     if (layer.position.x < centerX)//go to left

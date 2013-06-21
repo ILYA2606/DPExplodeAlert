@@ -19,14 +19,15 @@
     return self;
 }
 
-+ (void)explodeView:(UIView*)view withDelegate:(id <DPExplodeDelegate>)delegate{
-    [DPExplodeHelper explodeView:view withDelegate:delegate andDuration:2.0 andExplodeCounter:20];
++ (void)explodeView:(UIView*)view withDelegate:(id <DPExplodeDelegate>)delegate andCenterX:(float)centerX{
+    [DPExplodeHelper explodeView:view withDelegate:delegate andDuration:2.0 andExplodeCounter:20 andCenterX:centerX];
 }
 
-+ (void)explodeView:(UIView*)view withDelegate:(id <DPExplodeDelegate>)delegate andDuration:(NSTimeInterval)duration andExplodeCounter:(int)explodeCounter{
++ (void)explodeView:(UIView*)view withDelegate:(id <DPExplodeDelegate>)delegate andDuration:(NSTimeInterval)duration andExplodeCounter:(int)explodeCounter andCenterX:(float)centerX{
     DPExplodeHelper *explodeHelper = [[DPExplodeHelper alloc] init];
     explodeHelper.delegate = delegate;
     explodeHelper.viewForExplode = view;
+    explodeHelper.centerX = centerX;
     [explodeHelper explodeWithDuration:duration andExplodeCounter:explodeCounter];
 }
 
@@ -92,7 +93,7 @@
             layer.contents = (__bridge id)(tileImage);
             layer.borderWidth = 0.0f;
             layer.borderColor = [UIColor blackColor].CGColor;
-            layer.particlePath = [DPLayerHelper pathForLayer:layer parentRect:originalFrame andView:_viewForExplode];
+            layer.particlePath = [DPLayerHelper pathForLayer:layer parentRect:originalFrame andView:_viewForExplode andCenterX:_centerX];
             [_viewForExplode.layer addSublayer:layer];
             
             CGImageRelease(tileImage);
